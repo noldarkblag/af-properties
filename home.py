@@ -5,7 +5,7 @@ import os
 
 # Page Configuration
 st.set_page_config(
-    page_title="Fernandez Properties For Sale", 
+    page_title="Properties For Sale", 
     page_icon="🏠", 
     layout="wide"
 )
@@ -34,7 +34,7 @@ if st.session_state.current_page == 'home':
         if os.path.exists("logo.png"):
             st.image("logo.png", width=140)
     with col_title:
-        st.title("Fernandez Properties For Sale")
+        st.title("Properties For Sale")
         st.subheader("Featured Properties & Real Estate Listings")
 
     st.markdown("---")
