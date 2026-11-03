@@ -1,10 +1,11 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from PIL import Image
 import os
 
 # Page Configuration
 st.set_page_config(
-    page_title="Properties For Sale", 
+    page_title="Fernandez Properties For Sale", 
     page_icon="🏠", 
     layout="wide"
 )
@@ -33,7 +34,7 @@ if st.session_state.current_page == 'home':
         if os.path.exists("logo.png"):
             st.image("logo.png", width=140)
     with col_title:
-        st.title("Properties For Sale")
+        st.title("Fernandez Properties For Sale")
         st.subheader("Featured Properties & Real Estate Listings")
 
     st.markdown("---")
@@ -119,15 +120,27 @@ elif st.session_state.current_page == 'bonifacio':
     st.header("📞 Schedule a Viewing / Inquire Now")
     st.write("For direct inquiries, call or message: **09524656801**")
 
-    with st.form("inquiry_bonifacio"):
-        name = st.text_input("Full Name")
-        phone = st.text_input("Phone Number / Email")
-        message = st.text_area("Message or Preferred Date of Viewing")
-        if st.form_submit_button("Submit Inquiry"):
-            if name and phone:
-                st.success(f"Thank you, {name}! We will contact you at {phone} shortly.")
-            else:
-                st.error("Please enter your name and phone number.")
+    # Email Form via FormSubmit
+    form_bonifacio = """
+    <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" style="font-family: sans-serif;">
+        <input type="hidden" name="_subject" value="New Inquiry: Bonifacio Village House">
+        <input type="hidden" name="_captcha" value="false">
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Full Name</label>
+            <input type="text" name="name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Phone Number / Email</label>
+            <input type="text" name="contact" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Message or Preferred Date of Viewing</label>
+            <textarea name="message" rows="4" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        </div>
+        <button type="submit" style="background-color: #ff4b4b; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Submit Inquiry</button>
+    </form>
+    """
+    components.html(form_bonifacio, height=360)
 
 
 # ==========================================
@@ -185,13 +198,24 @@ elif st.session_state.current_page == 'mindanao':
     st.header("📞 Inquire Now / Schedule a Site Visit")
     st.write("For direct inquiries, proposals, or viewing, call or message: **09524656801**")
 
-    with st.form("inquiry_mindanao"):
-        name = st.text_input("Full Name")
-        phone = st.text_input("Phone Number / Email")
-        inquiry_type = st.selectbox("Interested In:", ["For Sale", "For Lease", "General Inquiry"])
-        message = st.text_area("Message or Preferred Inspection Date")
-        if st.form_submit_button("Submit Inquiry"):
-            if name and phone:
-                st.success(f"Thank you, {name}! We received your inquiry regarding {inquiry_type}.")
-            else:
-                st.error("Please enter your name and phone number.")
+    # Email Form via FormSubmit
+    form_mindanao = """
+    <form action="https://formsubmit.co/arnoldh.fernandez00@gmail.com" method="POST" style="font-family: sans-serif;">
+        <input type="hidden" name="_subject" value="New Inquiry: Mindanao Ave Commercial Lot">
+        <input type="hidden" name="_captcha" value="false">
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Full Name</label>
+            <input type="text" name="name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Phone Number / Email</label>
+            <input type="text" name="contact" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Message or Preferred Inspection Date</label>
+            <textarea name="message" rows="4" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        </div>
+        <button type="submit" style="background-color: #ff4b4b; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Submit Inquiry</button>
+    </form>
+    """
+    components.html(form_mindanao, height=360)
