@@ -10,6 +10,9 @@ st.set_page_config(
     layout="wide"
 )
 
+# Email address kung saan ipapadala ang mga inquiry
+TARGET_EMAIL = "arnolh.fernandez00@gmail.com"
+
 # Initialize navigation state
 if 'current_page' not in st.session_state:
     st.session_state.current_page = 'home'
@@ -77,10 +80,10 @@ if st.session_state.current_page == 'home':
         if os.path.exists("antipolo1.jpg"):
             st.image("antipolo1.jpg", use_container_width=True)
     with col6:
-        st.subheader("🏡 Property for Sale in Antipolo")
-        st.write("💰 **Price:** Inquire for Price")
-        st.write("📍 **Location:** Antipolo, Rizal")
-        st.write("🛏️ Bedrooms | 🛁 Bathrooms | 📐 LA: --- sqm | FA: --- sqm")
+        st.subheader("🏡 Prime Lot in Beverly Hills, Antipolo / Taytay")
+        st.write("💰 **Asking Price:** ₱6,000,000")
+        st.write("📍 **Location:** Beverly Hills Subdivision, Taytay / Antipolo, Rizal")
+        st.write("📐 **Lot Area:** 300 sqm | 📄 **Title:** Clean Title")
         st.button("👉 View Full Details & Photos", key="btn_antipolo", on_click=go_to, args=('antipolo',))
 
 
@@ -134,8 +137,8 @@ elif st.session_state.current_page == 'bonifacio':
     st.header("📞 Schedule a Viewing / Inquire Now")
     st.write("For direct inquiries, call or message: **09524656801**")
 
-    form_bonifacio = """
-    <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" style="font-family: sans-serif;">
+    form_bonifacio = f"""
+    <form action="https://formsubmit.co/{TARGET_EMAIL}" method="POST" style="font-family: sans-serif;">
         <input type="hidden" name="_subject" value="New Inquiry: Bonifacio Village House">
         <input type="hidden" name="_captcha" value="false">
         <div style="margin-bottom: 12px;">
@@ -211,8 +214,8 @@ elif st.session_state.current_page == 'mindanao':
     st.header("📞 Inquire Now / Schedule a Site Visit")
     st.write("For direct inquiries, proposals, or viewing, call or message: **09524656801**")
 
-    form_mindanao = """
-    <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" style="font-family: sans-serif;">
+    form_mindanao = f"""
+    <form action="https://formsubmit.co/{TARGET_EMAIL}" method="POST" style="font-family: sans-serif;">
         <input type="hidden" name="_subject" value="New Inquiry: Mindanao Ave Commercial Lot">
         <input type="hidden" name="_captcha" value="false">
         <div style="margin-bottom: 12px;">
@@ -234,16 +237,16 @@ elif st.session_state.current_page == 'mindanao':
 
 
 # ==========================================
-# 🌄 PROPERTY 3: ANTIPOLO DETAILS
+# 🌄 PROPERTY 3: BEVERLY HILLS ANTIPOLO DETAILS
 # ==========================================
 elif st.session_state.current_page == 'antipolo':
     st.button("⬅️ Back to All Listings", on_click=go_to, args=('home',))
     
-    st.title("🏡 Property for Sale in Antipolo")
-    st.subheader("Antipolo, Rizal | Relaxing & Cool Environment")
+    st.title("🏡 Prime Lot for Sale in Beverly Hills, Antipolo / Taytay")
+    st.subheader("Beverly Hills Subdivision, Taytay / Antipolo, Rizal")
 
     if os.path.exists("antipolo1.jpg"):
-        st.image("antipolo1.jpg", caption="Frontage View - Antipolo", use_container_width=True)
+        st.image("antipolo1.jpg", caption="Property View - Beverly Hills, Antipolo / Taytay, Rizal", use_container_width=True)
 
     st.markdown("---")
     col1, col2 = st.columns([1, 1])
@@ -261,29 +264,30 @@ elif st.session_state.current_page == 'antipolo':
             else:
                 break
         if not found_any:
-            st.info("💡 Maglagay ng mga larawan tulad ng 'antipolo1.jpg', 'antipolo2.jpg', atbp. sa GitHub.")
+            st.info("💡 Add photos named 'antipolo1.jpg', 'antipolo2.jpg', etc. in your GitHub directory.")
 
     with col2:
         st.header("✨ Property Highlights & Details")
-        st.markdown("### 💰 **Asking Price:** *(Lagyan ng Presyo)*")
-        st.markdown("📍 **Location:** Antipolo, Rizal")
+        st.markdown("### 💰 **Asking Price:** ₱6,000,000")
+        st.markdown("📍 **Location:** Beverly Hills Subdivision, Taytay / Antipolo, Rizal")
         st.markdown("---")
-        st.markdown("### 📋 Property Features")
+        st.markdown("### 📋 Property Specifications")
         st.markdown("""
-        * ✅ **Lot Area:** --- sqm
-        * ✅ **Floor Area:** --- sqm
-        * ✅ **Bedrooms:** ---
-        * ✅ **Bathrooms:** ---
-        * ✅ **Highlights:** Nice view, quiet neighborhood, accessible to main roads.
+        * ✅ **Lot Area:** 300 sqm
+        * ✅ **Title Status:** Clean Title (Ready for Transfer)
+        * ✅ **Subdivision:** Beverly Hills Subdivision (Taytay / Antipolo boundary)
+        * ✅ **Environment:** Exclusive, quiet, elevated, and 100% flood-free subdivision with cool breeze climate.
+        * ✅ **Accessibility:** Easy access via Ortigas Avenue Extension, Sumulong Highway, and C-6 / Antipolo roads.
+        * ✅ **Ideal Use:** Perfect for building a spacious residential family home, villa, or long-term real estate investment.
         """)
 
     st.markdown("---")
     st.header("📞 Schedule a Viewing / Inquire Now")
     st.write("For direct inquiries, call or message: **09524656801**")
 
-    form_antipolo = """
-    <form action="https://formsubmit.co/arnolh.fernandez00@gmail.com" method="POST" style="font-family: sans-serif;">
-        <input type="hidden" name="_subject" value="New Inquiry: Antipolo Property">
+    form_antipolo = f"""
+    <form action="https://formsubmit.co/{TARGET_EMAIL}" method="POST" style="font-family: sans-serif;">
+        <input type="hidden" name="_subject" value="New Inquiry: Beverly Hills Antipolo Lot (300sqm)">
         <input type="hidden" name="_captcha" value="false">
         <div style="margin-bottom: 12px;">
             <label style="font-weight: bold; display: block; margin-bottom: 5px;">Full Name</label>
