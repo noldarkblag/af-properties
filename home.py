@@ -69,6 +69,20 @@ if st.session_state.current_page == 'home':
         st.write("📐 **Lot Area:** 1,206 sqm | **Frontage:** 36 meters")
         st.button("👉 View Full Details & Photos", key="btn_mindanao", on_click=go_to, args=('mindanao',))
 
+    st.markdown("---")
+
+    # --- PROPERTY 3: ANTIPOLO PROPERTY ---
+    col5, col6 = st.columns([1, 2])
+    with col5:
+        if os.path.exists("antipolo1.jpg"):
+            st.image("antipolo1.jpg", use_container_width=True)
+    with col6:
+        st.subheader("🏡 Property for Sale in Antipolo")
+        st.write("💰 **Price:** Inquire for Price")
+        st.write("📍 **Location:** Antipolo, Rizal")
+        st.write("🛏️ Bedrooms | 🛁 Bathrooms | 📐 LA: --- sqm | FA: --- sqm")
+        st.button("👉 View Full Details & Photos", key="btn_antipolo", on_click=go_to, args=('antipolo',))
+
 
 # ==========================================
 # 📍 PROPERTY 1: BONIFACIO VILLAGE DETAILS
@@ -120,7 +134,6 @@ elif st.session_state.current_page == 'bonifacio':
     st.header("📞 Schedule a Viewing / Inquire Now")
     st.write("For direct inquiries, call or message: **09524656801**")
 
-    # Email Form via FormSubmit
     form_bonifacio = """
     <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" style="font-family: sans-serif;">
         <input type="hidden" name="_subject" value="New Inquiry: Bonifacio Village House">
@@ -198,9 +211,8 @@ elif st.session_state.current_page == 'mindanao':
     st.header("📞 Inquire Now / Schedule a Site Visit")
     st.write("For direct inquiries, proposals, or viewing, call or message: **09524656801**")
 
-    # Email Form via FormSubmit
     form_mindanao = """
-    <form action="https://formsubmit.co/arnoldh.fernandez00@gmail.com" method="POST" style="font-family: sans-serif;">
+    <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" style="font-family: sans-serif;">
         <input type="hidden" name="_subject" value="New Inquiry: Mindanao Ave Commercial Lot">
         <input type="hidden" name="_captcha" value="false">
         <div style="margin-bottom: 12px;">
@@ -219,3 +231,73 @@ elif st.session_state.current_page == 'mindanao':
     </form>
     """
     components.html(form_mindanao, height=360)
+
+
+# ==========================================
+# 🌄 PROPERTY 3: ANTIPOLO DETAILS
+# ==========================================
+elif st.session_state.current_page == 'antipolo':
+    st.button("⬅️ Back to All Listings", on_click=go_to, args=('home',))
+    
+    st.title("🏡 Property for Sale in Antipolo")
+    st.subheader("Antipolo, Rizal | Relaxing & Cool Environment")
+
+    if os.path.exists("antipolo1.jpg"):
+        st.image("antipolo1.jpg", caption="Frontage View - Antipolo", use_container_width=True)
+
+    st.markdown("---")
+    col1, col2 = st.columns([1, 1])
+
+    with col1:
+        st.header("📸 Photo Gallery")
+        i = 1
+        found_any = False
+        while True:
+            photo_name = f"antipolo{i}.jpg"
+            if os.path.exists(photo_name):
+                st.image(photo_name, caption=f"Property Photo {i}", use_container_width=True)
+                found_any = True
+                i += 1
+            else:
+                break
+        if not found_any:
+            st.info("💡 Maglagay ng mga larawan tulad ng 'antipolo1.jpg', 'antipolo2.jpg', atbp. sa GitHub.")
+
+    with col2:
+        st.header("✨ Property Highlights & Details")
+        st.markdown("### 💰 **Asking Price:** *(Lagyan ng Presyo)*")
+        st.markdown("📍 **Location:** Antipolo, Rizal")
+        st.markdown("---")
+        st.markdown("### 📋 Property Features")
+        st.markdown("""
+        * ✅ **Lot Area:** --- sqm
+        * ✅ **Floor Area:** --- sqm
+        * ✅ **Bedrooms:** ---
+        * ✅ **Bathrooms:** ---
+        * ✅ **Highlights:** Nice view, quiet neighborhood, accessible to main roads.
+        """)
+
+    st.markdown("---")
+    st.header("📞 Schedule a Viewing / Inquire Now")
+    st.write("For direct inquiries, call or message: **09524656801**")
+
+    form_antipolo = """
+    <form action="https://formsubmit.co/arnolh.fernandez00@gmail.com" method="POST" style="font-family: sans-serif;">
+        <input type="hidden" name="_subject" value="New Inquiry: Antipolo Property">
+        <input type="hidden" name="_captcha" value="false">
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Full Name</label>
+            <input type="text" name="name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Phone Number / Email</label>
+            <input type="text" name="contact" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <div style="margin-bottom: 12px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Message or Preferred Date of Viewing</label>
+            <textarea name="message" rows="4" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        </div>
+        <button type="submit" style="background-color: #ff4b4b; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Submit Inquiry</button>
+    </form>
+    """
+    components.html(form_antipolo, height=360)
