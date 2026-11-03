@@ -4,7 +4,7 @@ import os
 
 # Page Configuration
 st.set_page_config(
-    page_title="Fernandez Properties For Sale", 
+    page_title="Properties For Sale", 
     page_icon="🏠", 
     layout="wide"
 )
