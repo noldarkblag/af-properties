@@ -9,17 +9,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# Button pabalik sa Main Catalog Page
-if st.button("⬅️ Back to all listing"):
-    st.switch_page("home.py")
+# Button to return to the catalog
+st.page_link("home.py", label="⬅️ Back to All Listings", icon="🏠")
 
 st.title("🏢 FOR SALE / FOR LEASE: Prime Commercial Lot in Mindanao Ave")
 st.subheader("742 Mindanao Ave, Tandang Sora, Quezon City (Northbound)")
 
-# Helper function para i-load at gawing Portrait (Tayo) ang larawan
+# Helper function to load images as Portrait orientation if needed
 def load_as_portrait(image_path):
     img = Image.open(image_path)
-    # Kung mas malapad (landscape) kaysa sa taas, i-rotate ng 270 degrees para maging portrait
     if img.width > img.height:
         img = img.rotate(270, expand=True)
     return img
@@ -38,7 +36,7 @@ col1, col2 = st.columns([1, 1])
 with col1:
     st.header("📸 Photo Gallery & Site Photos")
     
-    # AUTOMATIC PHOTO LOOPER: Hahanapin ang mindanao1.jpg, mindanao2.jpg, mindanao3.jpg...
+    # AUTOMATIC PHOTO LOOPER: Scans for mindanao1.jpg, mindanao2.jpg, mindanao3.jpg...
     found_any_photo = False
     i = 1
     while True:
@@ -52,7 +50,7 @@ with col1:
             break
             
     if not found_any_photo:
-        st.info("💡 Maglagay ng mga larawan tulad ng 'mindanao1.jpg', 'mindanao2.jpg', atbp. sa iyong D:\\Website\\ folder.")
+        st.info("💡 Add photos named 'mindanao1.jpg', 'mindanao2.jpg', etc. in your root directory.")
 
 with col2:
     st.header("✨ Property Highlights & Details")
@@ -93,6 +91,6 @@ with st.form("inquiry_form_mindanao"):
     
     if submitted:
         if name and phone:
-            st.success(f"Salamat, {name}! Natanggap namin ang iyong inquiry hinggil sa ({inquiry_type}) ng Mindanao Avenue Commercial Lot.")
+            st.success(f"Thank you, {name}! We have received your inquiry regarding ({inquiry_type}) for the Mindanao Avenue Commercial Lot.")
         else:
-            st.error("Pakilagay ang iyong pangalan at phone number.")
+            st.error("Please enter your full name and phone number.")
