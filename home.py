@@ -21,7 +21,7 @@ with col_title:
 
 st.markdown("---")
 
-st.write("Pumili ng property sa ibaba para makita ang kumpletong detalye at mga larawan:")
+st.write("Select a property below to view complete details, specifications, and photo galleries:")
 st.write("")
 
 # --- PROPERTY 1: BONIFACIO VILLAGE ---
@@ -37,8 +37,8 @@ with col2:
     st.write("📍 **Location:** Bonifacio Village, Brgy. Pasong Tamo, Quezon City")
     st.write("🛏️ 4 Bedrooms | 🛁 3 Baths | 📐 LA: 126 sqm | FA: 200 sqm")
     
-    if st.button("👉 Tingnan ang Kumpletong Detalye at Photos", key="btn_bonifacio"):
-        st.switch_page("pages/1_Bonifacio_Village.py")
+    # Safe Streamlit Page Navigation Link
+    st.page_link("pages/1_Bonifacio_Village.py", label="👉 View Full Details & Photos", icon="🔍")
 
 st.markdown("---")
 
@@ -48,6 +48,8 @@ col3, col4 = st.columns([1, 2])
 with col3:
     if os.path.exists("mindanao1.jpg"):
         st.image("mindanao1.jpg", use_container_width=True)
+    elif os.path.exists("mindanao_facade.jpg"):
+        st.image("mindanao_facade.jpg", use_container_width=True)
 
 with col4:
     st.subheader("🏢 Prime Commercial Lot in Mindanao Ave, QC")
@@ -55,5 +57,5 @@ with col4:
     st.write("📍 **Location:** 742 Mindanao Ave, Tandang Sora, Quezon City (In front of Subway Station)")
     st.write("📐 **Lot Area:** 1,206 sqm | **Frontage:** 36 meters")
     
-    if st.button("👉 Tingnan ang Kumpletong Detalye at Photos", key="btn_mindanao"):
-        st.switch_page("pages/2_Mindanao_Avenue.py")
+    # Safe Streamlit Page Navigation Link
+    st.page_link("pages/2_Mindanao_Avenue.py", label="👉 View Full Details & Photos", icon="🔍")
